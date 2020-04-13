@@ -1,0 +1,23 @@
+int lightcondition = D6;
+void setup() 
+{
+    pinMode(lightcondition,INPUT);
+}
+
+void loop() 
+{
+    String light = String(random(0,2));
+    if( light == "1" )
+    {
+        String lightcond = ("ON");
+        Particle.publish("light","on");
+        Serial.print(lightcond);
+    }
+    else if( light == "0")
+    {
+        String lightcond = ("OFF");
+        Particle.publish("light","off");
+        Serial.print(lightcond);
+    }
+    delay(1800000);               //Taking the information every 30 minutes
+}
